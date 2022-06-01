@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { FeaturesBox, ArrowLeftBox, ArrowRightBox, SliderBox } from "./style";
+import { FeaturesBox, ArrowLeftBox, ArrowRightBox, SliderBox } from "./Style";
 import { Box } from "@mui/material";
 
 function Feature() {
