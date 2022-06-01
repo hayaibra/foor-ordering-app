@@ -20,10 +20,6 @@ function OurRest() {
             display: { xs: "none", md: "block" },
             flexBasis: { md: "200px", lg: "400px" },
             marginRight: { md: "30px", lg: "0" },
-            // flex: 1,
-            // width: { md: "200px", lg: "300" },
-            // height: { md: "300px", lg: "300" },
-            // alignItems:"center"
           }}
         >
           <Image
@@ -31,6 +27,7 @@ function OurRest() {
             width="300"
             height="500"
             style={{ left: "-50px" }}
+            alt="footer"
           />
         </Box>
         <Box
@@ -48,11 +45,6 @@ function OurRest() {
             }}
           >
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              {/* <Image
-                src={require("../../public/imgs/location.png")}
-                width="30"
-                height="30"
-          />*/}
               <TitleBox
                 varient="h1"
                 fontWeight="bold"
@@ -102,7 +94,6 @@ function OurRest() {
               fontWeight="bold"
               sx={{
                 fontSize: { xs: "20px", sm: "25px", lg: "30px" },
-                // marginLeft: { xs: "-40px", md: 0 },
                 marginBottom: "30px",
               }}
             >

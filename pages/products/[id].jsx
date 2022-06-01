@@ -15,6 +15,7 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import { useSelector, useDispatch } from "react-redux";
 import { add } from "../../app/store/Counter";
 import { addProduct } from "../../app/store/Cart";
+import { useState } from "react";
 
 const Price = styled("span")(({ theme }) => ({
   color: theme.palette.othercolor.main,
@@ -46,13 +47,13 @@ const Form = styled(FormControlLabel)(({ theme }) => ({
   },
 }));
 
-function product(props) {
-  const [price, setPrice] = React.useState(props.product.price[0]);
-  const [size, setSize] = React.useState(0);
-  const [extras, setExtras] = React.useState([]);
-  const [quantity, setQuantity] = React.useState(1);
-  const [finalTotal, setFinalTotal] = React.useState([]);
-  const [date, setDate] = React.useState(new Date());
+function Product(props) {
+  const [price, setPrice] = useState(props.product.price[0]);
+  const [size, setSize] = useState(0);
+  const [extras, setExtras] = useState([]);
+  const [quantity, setQuantity] = useState(1);
+  const [finalTotal, setFinalTotal] = useState([]);
+  const [date, setDate] = useState(new Date());
 
   const globalState = useSelector((state) => state);
 
@@ -106,7 +107,6 @@ function product(props) {
           alignItems: "center",
           flexDirection: { xs: "column", md: "row" },
         }}
-        key={props.product.id}
       >
         <Box
           sx={{
@@ -123,13 +123,16 @@ function product(props) {
             }}
             key={props.product.id}
           >
-            <Image src={props.product.img} fitobject="fill" alt="" />
+            <Image
+              src={props.product.img}
+              fitobject="fill"
+              alt={props.product.name}
+            />
           </Box>
         </Box>
         <Box
           sx={{
             flex: 1,
-            // paddingTop: { xs: 0, sm: "60px" },
             textAlign: { xs: "center", md: "start" },
           }}
         >
@@ -139,7 +142,6 @@ function product(props) {
             sx={{
               fontSize: { xs: "30px", sm: "40px", md: "33px", lg: "45px" },
             }}
-            // key={props.product.id}
           >
             {props.product.name}
           </Typography>
@@ -152,7 +154,6 @@ function product(props) {
               padding: "16px 16px 16px 0",
               fontSize: { md: "15px", lg: "18px" },
             }}
-            // key={props.product.id}
           >
             {props.product.desc}
           </Typography>
@@ -178,6 +179,7 @@ function product(props) {
                 src={require("../../public/imgs/size.png")}
                 width="30"
                 height="30"
+                alt="size"
               />
             </Badge>
             <Badge
@@ -190,6 +192,7 @@ function product(props) {
                 src={require("../../public/imgs/size.png")}
                 width="40"
                 height="40"
+                alt="size"
               />
             </Badge>
             <Badge
@@ -202,6 +205,7 @@ function product(props) {
                 src={require("../../public/imgs/size.png")}
                 width="50"
                 height="50"
+                alt="size"
               />
             </Badge>
           </Box>
@@ -264,7 +268,7 @@ function product(props) {
   );
 }
 
-export default product;
+export default Product;
 
 export async function getStaticPaths() {
   const req = await fetch("http://localhost:3000/api/products");

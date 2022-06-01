@@ -8,7 +8,7 @@ import Image from "next/image";
 function Card({ product }) {
   return (
     <Grid item lg={3} md={4} xs={10} sm={6} textAlign="center" key={product.id}>
-      <Link href={`/products/${product.id}`}>
+      <Link href={`/products/${product.id}`} passHref>
         <Paper
           elevation={6}
           sx={{
@@ -30,7 +30,7 @@ function Card({ product }) {
             <span style={{ fontWeight: "bold" }}>{product.rate}</span>
           </div>
           <div>
-            <Image src={product.img} width="150" height="150" alt="" />
+            <Image src={product.img} width="150" height="150" alt={product.name} />
           </div>
           <Typography variant="body1" sx={{ fontWeight: "bold" }} gutterBottom>
             {product.name}

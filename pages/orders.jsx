@@ -17,6 +17,7 @@ import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
 import { reset } from "../app/store/Data";
 import { resett } from "../app/store/Cart";
+import { useState } from "react";
 
 const cartFromLocalStorage = JSON.parse(
   localStorage.getItem("product") || "[]"
@@ -24,9 +25,9 @@ const cartFromLocalStorage = JSON.parse(
 
 function Order() {
   const orders = useSelector((state) => state.data.info);
-  const [paid, setPaid] = React.useState(true);
+  const [paid, setPaid] = useState(true);
   let d = useSelector((state) => state.cart.product);
-  const [product, setProduct] = React.useState([...cartFromLocalStorage, ...d]);
+  const [product, setProduct] = useState([...cartFromLocalStorage, ...d]);
   const dispatch = useDispatch();
 
   const bill = [];
@@ -50,10 +51,10 @@ function Order() {
     setPaid(true);
   };
 
-
   React.useEffect(() => {
     localStorage.setItem("product", JSON.stringify(product));
   }, [product]);
+
   return (
     <>
       <Box
@@ -78,7 +79,7 @@ function Order() {
               </TableHead>
               <TableBody>
                 {orders.map((order) => (
-                  <TableRow>
+                  <TableRow key={order.id}>
                     <TableCell>{order.id}</TableCell>
                     <TableCell>{order.cutomerName}</TableCell>
                     <TableCell>{order.address}</TableCell>
@@ -94,12 +95,14 @@ function Order() {
                 src={require("../public/imgs/paid.png")}
                 width="30"
                 height="30"
+                alt="paid"
               />
               <Typography>Payment</Typography>
               <Image
                 src={require("../public/imgs/checked.png")}
                 width="20"
                 height="20"
+                alt="checked"
               />
             </Box>
             <Box
@@ -111,12 +114,14 @@ function Order() {
                 src={require("../public/imgs/bake.png")}
                 width="30"
                 height="30"
+                alt="bake"
               />
               <Typography>Preparing</Typography>
               <Image
                 src={require("../public/imgs/checked.png")}
                 width="20"
                 height="20"
+                alt="checked"
               />
             </Box>
             <Box
@@ -129,6 +134,7 @@ function Order() {
                 src={require("../public/imgs/bike.png")}
                 width="30"
                 height="30"
+                alt="bike"
               />
               <Typography>On The Way</Typography>
               <Box display="none">
@@ -136,6 +142,7 @@ function Order() {
                   src={require("../public/imgs/checked.png")}
                   width="20"
                   height="20"
+                  alt="checked"
                 />
               </Box>
             </Box>
@@ -149,6 +156,7 @@ function Order() {
                 src={require("../public/imgs/delivered.png")}
                 width="30"
                 height="30"
+                alt="delivered"
               />
               <Typography>Delivered</Typography>
               <Box display="none">
@@ -156,6 +164,7 @@ function Order() {
                   src={require("../public/imgs/checked.png")}
                   width="20"
                   height="20"
+                  alt="checked"
                 />
               </Box>
             </Box>

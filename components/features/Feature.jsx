@@ -24,6 +24,7 @@ function Feature() {
             src={require("../../public/imgs/arrowl.png")}
             width="30"
             height="30"
+            alt="leftarrow"
           />
         </ArrowLeftBox>
         <SliderBox sx={{ transform: `translateX(${-100 * index}vw)` }}>
@@ -42,7 +43,7 @@ function Feature() {
               <Image
                 src={require(`../../public/imgs/${feature}`)}
                 objectFit="contain"
-                // layout="fill"
+                alt={feature}
               />
             </Box>
           ))}
@@ -52,6 +53,7 @@ function Feature() {
             src={require("../../public/imgs/arrowr.png")}
             width="30"
             height="30"
+            alt="rightarrow"
           />
         </ArrowRightBox>
       </Box>

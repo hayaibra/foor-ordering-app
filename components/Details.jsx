@@ -11,6 +11,7 @@ import Link from "next/link";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { sorting } from "../app/store/Data";
+import { useState } from "react";
 
 const Label = styled("label")(({ theme }) => ({
   color: theme.palette.othercolor.main,
@@ -19,12 +20,12 @@ const Label = styled("label")(({ theme }) => ({
 }));
 
 export default function Details({ open, total, setOpen }) {
-  const [cutomerName, setCutomerName] = React.useState("");
-  const [phoneNumber, setPhoneNumber] = React.useState("");
-  const [address, setAddress] = React.useState("");
-  const [id, setId] = React.useState(1);
-  const [finalTotal, setfinalTotal] = React.useState(total);
-  const [bill, setBill] = React.useState([]);
+  const [cutomerName, setCutomerName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
+  const [id, setId] =useState(1);
+  const [finalTotal, setfinalTotal] = useState(total);
+  const [bill, setBill] = useState([]);
 
 
   const dispatch = useDispatch();

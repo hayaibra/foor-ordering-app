@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import { Box, Container, Stack, Typography, Grid, styled } from "@mui/material";
-import { TitleBox, Text, FooterInfoBox, FooterBox } from "./Style";
+import { Box, Typography, Grid, styled, Container } from "@mui/material";
+import { FooterInfoBox, FooterBox } from "./Style";
 
 const Footerr = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.othercolor.main,
@@ -11,7 +11,7 @@ function Footer() {
   return (
     <Footerr style={{ padding: "60px 0" }}>
       <FooterBox>
-        <FooterInfoBox>
+        <Container>
           <Grid container spacing={10} my={4}>
             <Grid item md={3} xs={10} sm={6}>
               <Box>
@@ -20,6 +20,7 @@ function Footer() {
                     src={require("../../public/imgs/logo.png")}
                     width="200"
                     height="50"
+                    alt="logo"
                   />
                 </Box>
                 <Typography color="primary" my={3}>
@@ -33,6 +34,7 @@ function Footer() {
                       src={require("../../public/imgs/icon1.png")}
                       width="28"
                       height="28"
+                      alt="icon1"
                     />
                   </div>
                   <div style={{ marginRight: "10px" }}>
@@ -40,6 +42,7 @@ function Footer() {
                       src={require("../../public/imgs/icon2.png")}
                       width="32"
                       height="32"
+                      alt="icon2"
                     />
                   </div>
                   <div style={{ marginRight: "10px" }}>
@@ -47,6 +50,7 @@ function Footer() {
                       src={require("../../public/imgs/icon3.png")}
                       width="30"
                       height="30"
+                      alt="icon3"
                     />
                   </div>
                   <div style={{ marginRight: "10px" }}>
@@ -54,6 +58,7 @@ function Footer() {
                       src={require("../../public/imgs/icon4.png")}
                       width="30"
                       height="30"
+                      alt="icon4"
                     />
                   </div>
                 </Box>
@@ -64,7 +69,7 @@ function Footer() {
                 <Typography
                   color="primary"
                   varient="h5"
-                  sx={{ fontSize: "20px" }}
+                  sx={{ fontSize: "20px", fontWeight: 700 }}
                 >
                   About
                 </Typography>
@@ -116,7 +121,7 @@ function Footer() {
                 <Typography
                   color="primary"
                   varient="h5"
-                  sx={{ fontSize: "20px" }}
+                  sx={{ fontSize: "20px", fontWeight: 700 }}
                 >
                   Services
                 </Typography>
@@ -138,7 +143,12 @@ function Footer() {
                       display: "block",
                     }}
                   >
-                    <a href="#p">Our Product</a>
+                    <a
+                      href="#p"
+                      style={{ textDecoration: "none", color: "white" }}
+                    >
+                      Our Product
+                    </a>
                   </p>
                   <p
                     style={{
@@ -169,7 +179,7 @@ function Footer() {
                 <Typography
                   color="primary"
                   varient="h5"
-                  sx={{ fontSize: "20px" }}
+                  sx={{ fontSize: "20px", fontWeight: 700 }}
                 >
                   Other
                 </Typography>
@@ -197,7 +207,7 @@ function Footer() {
               </Box>
             </Grid>
           </Grid>
-        </FooterInfoBox>
+        </Container>
       </FooterBox>
       <p
         style={{

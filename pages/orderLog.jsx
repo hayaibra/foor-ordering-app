@@ -11,14 +11,12 @@ import {
 } from "@mui/material";
 import React from "react";
 import Image from "next/image";
-// import { useSelector } from "react-redux";
-// import cart from "./cart";
-// import Data from "../app/store/Data";
+import { useState, useEffect } from "react";
 
-function orderLog() {
-  const [userData, setUserData] = React.useState("");
+function OrderLog() {
+  const [userData, setUserData] = useState("");
 
-  React.useEffect(() => {
+  useEffect(() => {
     let data = JSON.parse(localStorage.getItem("product"));
 
     if (data) {
@@ -27,7 +25,7 @@ function orderLog() {
   }, []);
 
   return (
-    <Box sx={{height:'90vh'}}>
+    <Box sx={{ height: "90vh" }}>
       <TableContainer
         sx={{
           flex: 2,
@@ -51,16 +49,21 @@ function orderLog() {
           <TableBody>
             {userData.length > 0 &&
               userData.map((row) => (
-                <TableRow>
+                <TableRow key={row.id}>
                   <TableCell>
-                    <Image src={row.img} width="70" height="70" />
+                    <Image
+                      src={row.img}
+                      width="70"
+                      height="70"
+                      alt={row.name}
+                    />
                   </TableCell>
                   <TableCell>
                     <Typography color="error">{row.name}</Typography>
                   </TableCell>
                   <TableCell>
                     {row.extras.map((extra) => (
-                      <span>{extra},</span>
+                      <span key={extra.id}>{extra},</span>
                     ))}
                   </TableCell>
                   <TableCell>{row.price} SPY</TableCell>
@@ -76,4 +79,4 @@ function orderLog() {
   );
 }
 
-export default orderLog;
+export default OrderLog;

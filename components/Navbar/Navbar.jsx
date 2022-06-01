@@ -1,26 +1,19 @@
-import {
-  AppBar,
-  Box,
-  Stack,
-  Avatar,
-  Badge,
-  Drawer,
-  Button,
-} from "@mui/material";
+import React from "react";
+import { AppBar, Box, Stack, Avatar, Badge, Button } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { ToolbarBox } from "./Style";
 import { useSelector, useDispatch } from "react-redux";
 import { zero } from "../../app/store/Counter";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useState } from "react";
 
 function Navbar() {
   const globalState = useSelector((state) => state);
   const counter = globalState.counter.value;
   const dispatch = useDispatch();
-  const [open, setOpen] = React.useState(false);
-  const [translate, setTranslate] = React.useState(100);
+  const [open, setOpen] = useState(false);
+  const [translate, setTranslate] = useState(100);
 
   function handleClick() {
     setOpen(!open);
@@ -35,23 +28,41 @@ function Navbar() {
             src={require("../../public/imgs/logo.png")}
             width="200"
             height="30"
+            alt="logo"
           />
 
           <Stack
             direction="row"
             spacing={3}
             alignItems="center"
-            sx={{ display: { xs: "none", md: "block" } }}
+            sx={{ display: { xs: "none", md: "flex" } }}
           >
-            <Link href="/">HomePage</Link>
-            <a href="#p">Products</a>
-            <Link href="/orderLog">Orders</Link>
-            <Link href="/orders">Payment</Link>
-            <Link href="/">Blog</Link>
-            <a href="#contact">Contacts</a>
+            <Link href="/" passHref>
+              <a style={{ textDecoration: "none", color: "white" }}>
+                 HomePage
+              </a>
+            </Link>
+            <a href="#p" style={{ textDecoration: "none", color: "white" }}>
+              Products
+            </a>
+            <Link href="/orderLog" passHref>
+              <a style={{ textDecoration: "none", color: "white" }}>Orders</a>
+            </Link>
+            <Link href="/orders" passHref>
+              <a style={{ textDecoration: "none", color: "white" }}>Payment</a>
+            </Link>
+            <Link href="/" passHref>
+              <a style={{ textDecoration: "none", color: "white" }}>Blog</a>
+            </Link>
+            <a
+              href="#contact"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Contacts
+            </a>
           </Stack>
           <Box sx={{ display: { xs: "none", md: "block" } }}>
-            <Link href="/cart">
+            <Link href="/cart" passHref>
               <div onClick={() => dispatch(zero(0))}>
                 <Badge badgeContent={counter}>
                   <Avatar sx={{ bgcolor: "white", cursor: "pointer" }}>
@@ -59,6 +70,7 @@ function Navbar() {
                       src={require("../../public/imgs/cart.png")}
                       width="20"
                       height="20"
+                      alt="cart"
                     />
                   </Avatar>
                 </Badge>
@@ -69,7 +81,7 @@ function Navbar() {
             sx={{ display: { xs: "flex", md: "none" }, alignItems: "center" }}
           >
             <Box marginRight="20px">
-              <Link href="/cart">
+              <Link href="/cart" passHref>
                 <div onClick={() => dispatch(zero(0))}>
                   <Badge badgeContent={counter}>
                     <Avatar sx={{ bgcolor: "white", cursor: "pointer" }}>
@@ -77,6 +89,7 @@ function Navbar() {
                         src={require("../../public/imgs/cart.png")}
                         width="20"
                         height="20"
+                        alt="cart"
                       />
                     </Avatar>
                   </Badge>
@@ -116,7 +129,9 @@ function Navbar() {
                   }}
                   onClick={() => setOpen(false)}
                 >
-                  <Link href="/">HomePage</Link>
+                  <Link href="/" passHref>
+                    HomePage
+                  </Link>
                 </Button>
                 <Button
                   variant="contained"
@@ -142,7 +157,9 @@ function Navbar() {
                   }}
                   onClick={() => setOpen(false)}
                 >
-                  <Link href="/">Menu</Link>
+                  <Link href="/" passHref>
+                    Menu
+                  </Link>
                 </Button>
                 <Button
                   variant="contained"
@@ -155,7 +172,9 @@ function Navbar() {
                   }}
                   onClick={() => setOpen(false)}
                 >
-                  <Link href="/orders">Orders</Link>
+                  <Link href="/orders" passHref>
+                    Orders
+                  </Link>
                 </Button>
                 <Button
                   variant="contained"
@@ -168,7 +187,9 @@ function Navbar() {
                   }}
                   onClick={() => setOpen(false)}
                 >
-                  <Link href="/">Blogs</Link>
+                  <Link href="/" passHref>
+                    Blogs
+                  </Link>
                 </Button>
                 <Button
                   variant="contained"

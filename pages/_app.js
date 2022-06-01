@@ -1,5 +1,4 @@
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import "../styles/globals.css";
 import Layout from "../components/Layout";
 import { CssBaseline } from "@mui/material";
 import React from "react";

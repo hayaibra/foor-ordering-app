@@ -14,8 +14,9 @@ import {
 import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
 import Details from "../components/Details";
+import { useState } from "react";
 
-function cart() {
+function Cart() {
   const cart = useSelector((state) => state.cart);
 
   const total =
@@ -40,7 +41,7 @@ function cart() {
   } else {
     finalBill = total * 0.5;
   }
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <>
@@ -74,16 +75,21 @@ function cart() {
               </TableHead>
               <TableBody>
                 {cart.product.map((row) => (
-                  <TableRow>
+                  <TableRow key={row.id}>
                     <TableCell>
-                      <Image src={row.img} width="70" height="70" />
+                      <Image
+                        src={row.img}
+                        width="70"
+                        height="70"
+                        alt={row.name}
+                      />
                     </TableCell>
                     <TableCell>
                       <Typography color="error">{row.name}</Typography>
                     </TableCell>
                     <TableCell>
                       {row.extras.map((extra) => (
-                        <span>{extra},</span>
+                        <span key={extra.id}>{extra},</span>
                       ))}
                     </TableCell>
                     <TableCell>{row.price} SPY</TableCell>
@@ -153,4 +159,4 @@ function cart() {
   );
 }
 
-export default cart;
+export default Cart;

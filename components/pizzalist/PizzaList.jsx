@@ -1,6 +1,6 @@
-import { Container, Grid, Paper, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import React from "react";
-import { PizzaListBox, Price } from "./Style";
+import { PizzaListBox } from "./Style";
 import Card from "./Card";
 
 function PizzaList({ products }) {

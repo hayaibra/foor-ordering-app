@@ -233,18 +233,22 @@ export const products = [
     extras: {
       type: [
         {
+          id: 1,
           text: "double ingrediants",
           price: 4000,
         },
         {
+          id: 2,
           text: "extra cheese",
           price: 3000,
         },
         {
+          id: 3,
           text: "spicy sauce",
           price: 2000,
         },
         {
+          id: 4,
           text: "garlic sauce",
           price: 1000,
         },
