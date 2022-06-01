@@ -19,9 +19,11 @@ import { reset } from "../app/store/Data";
 import { resett } from "../app/store/Cart";
 import { useState } from "react";
 
-const cartFromLocalStorage = JSON.parse(
-  localStorage.getItem("product") || "[]"
-);
+let cartFromLocalStorage = [];
+
+if (typeof window !== "undefined") {
+  cartFromLocalStorage = JSON.parse(localStorage.getItem("product") || "[]");
+}
 
 function Order() {
   const orders = useSelector((state) => state.data.info);

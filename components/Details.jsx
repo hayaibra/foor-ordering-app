@@ -82,7 +82,7 @@ export default function Details({ open, total, setOpen }) {
           />
 
           <div style={{ textAlign: "center", marginTop: "20px" }}>
-            <Link href="/orders">
+            <Link href="/orders" passHref>
               <Button
                 color="othercolor"
                 variant="contained"
