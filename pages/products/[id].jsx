@@ -270,7 +270,21 @@ function Product(props) {
 
 export default Product;
 
-export async function getServerSideProps({ params }) {
+export async function getStaticPaths() {
+  const req = await fetch("http://localhost:3000/api/products");
+  const data = await req.json();
+
+  const paths = data.map((product) => ({
+    params: { id: `${product.id}` },
+  }));
+
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }) {
   const res = await fetch(`http://localhost:3000/api/products/${params.id}`);
   const product = await res.json();
 
@@ -278,3 +292,4 @@ export async function getServerSideProps({ params }) {
     props: { product },
   };
 }
+
