@@ -2,8 +2,19 @@ import Head from "next/head";
 import Feature from "../components/features/Feature";
 import OurRest from "../components/footer/OurRest";
 import PizzaList from "../components/pizzalist/PizzaList";
+import { useState } from "react";
 
-export default function Home({ products }) {
+export default function Home() {
+  const [products, setProducts] = useState([]);
+
+  const fetchproducts = async () => {
+    const response = await fetch("/api/products");
+    const data = await response.json();
+    setProducts(data);
+  };
+  
+  fetchproducts();
+
   return (
     <div>
       <Head>
@@ -18,13 +29,13 @@ export default function Home({ products }) {
   );
 }
 
-export async function getStaticProps() {
-  const req = await fetch("http://localhost:3000/api/products");
-  const data = await req.json();
+// export async function getStaticProps() {
+//   const req = await fetch("http://localhost:3000/api/products");
+//   const data = await req.json();
 
-  return {
-    props: {
-      products: data,
-    },
-  };
-}
+//   return {
+//     props: {
+//       products: data,
+//     },
+//   };
+// }

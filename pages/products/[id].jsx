@@ -8,7 +8,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
@@ -16,6 +16,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { add } from "../../app/store/Counter";
 import { addProduct } from "../../app/store/Cart";
 import { useState } from "react";
+import { products } from "../../products";
 
 const Price = styled("span")(({ theme }) => ({
   color: theme.palette.othercolor.main,
@@ -271,19 +272,15 @@ function Product(props) {
 export default Product;
 
 export async function getStaticProps({ params }) {
-  const res = await fetch(`http://localhost:3000/api/products/${params.id}`);
-  const product = await res.json();
-
+  const data = products.find((p) => p.id === parseInt(params.id));
+  const product = JSON.parse(JSON.stringify(data));
   return {
     props: { product },
   };
 }
 
 export async function getStaticPaths() {
-  const req = await fetch("http://localhost:3000/api/products");
-  const data = await req.json();
-
-  const paths = data.map((product) => ({
+  const paths = products.map((product) => ({
     params: { id: `${product.id}` },
   }));
 
