@@ -12,7 +12,7 @@ export default function Home() {
     const data = await response.json();
     setProducts(data);
   };
-  
+
   fetchproducts();
 
   return (
@@ -28,14 +28,3 @@ export default function Home() {
     </div>
   );
 }
-
-// export async function getStaticProps() {
-//   const req = await fetch("http://localhost:3000/api/products");
-//   const data = await req.json();
-
-//   return {
-//     props: {
-//       products: data,
-//     },
-//   };
-// }
