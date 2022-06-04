@@ -24,7 +24,6 @@
   },
   "devDependencies": {
     "eslint": "8.14.0",
-    "eslint-config-next": "12.1.5",
-    "jest-canvas-mock": "^2.4.0"
+    "eslint-config-next": "12.1.5"
   }
 }
