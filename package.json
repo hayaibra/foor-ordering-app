@@ -23,7 +23,6 @@
   },
   "devDependencies": {
     "eslint": "8.14.0",
-    "eslint-config-next": "12.1.5",
-    "jest": "^28.1.0"
+    "eslint-config-next": "12.1.5"
   }
 }
