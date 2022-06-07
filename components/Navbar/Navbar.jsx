@@ -38,9 +38,7 @@ function Navbar() {
             sx={{ display: { xs: "none", md: "flex" } }}
           >
             <Link href="/" passHref>
-              <a style={{ textDecoration: "none", color: "white" }}>
-                 HomePage
-              </a>
+              <a style={{ textDecoration: "none", color: "white" }}>HomePage</a>
             </Link>
             <a href="#p" style={{ textDecoration: "none", color: "white" }}>
               Products
@@ -130,7 +128,9 @@ function Navbar() {
                   onClick={() => setOpen(false)}
                 >
                   <Link href="/" passHref>
-                    HomePage
+                    <a style={{ textDecoration: "none", color: "white" }}>
+                      HomePage
+                    </a>
                   </Link>
                 </Button>
                 <Button
@@ -144,7 +144,12 @@ function Navbar() {
                   }}
                   onClick={() => setOpen(false)}
                 >
-                  <a href="#p">Products</a>
+                  <a
+                    href="#p"
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    Products
+                  </a>
                 </Button>
                 <Button
                   variant="contained"
@@ -158,7 +163,9 @@ function Navbar() {
                   onClick={() => setOpen(false)}
                 >
                   <Link href="/" passHref>
-                    Menu
+                    <a style={{ textDecoration: "none", color: "white" }}>
+                      Menu
+                    </a>
                   </Link>
                 </Button>
                 <Button
@@ -173,7 +180,9 @@ function Navbar() {
                   onClick={() => setOpen(false)}
                 >
                   <Link href="/orders" passHref>
-                    Orders
+                    <a style={{ textDecoration: "none", color: "white" }}>
+                      Orders
+                    </a>
                   </Link>
                 </Button>
                 <Button
@@ -188,7 +197,9 @@ function Navbar() {
                   onClick={() => setOpen(false)}
                 >
                   <Link href="/" passHref>
-                    Blogs
+                    <a style={{ textDecoration: "none", color: "white" }}>
+                      Blogs
+                    </a>
                   </Link>
                 </Button>
                 <Button
@@ -202,7 +213,9 @@ function Navbar() {
                   }}
                   onClick={() => setOpen(false)}
                 >
-                  <a href="#contact">Contacts</a>
+                <a href="#contact" style={{ textDecoration: "none", color: "white" }}>
+                Contacts
+              </a>
                 </Button>
               </Box>
             )}
