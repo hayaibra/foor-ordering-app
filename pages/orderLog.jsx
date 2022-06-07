@@ -25,7 +25,7 @@ function OrderLog() {
   }, []);
 
   return (
-    <Box sx={{ height: "90vh" }}>
+    <Box >
       <TableContainer
         sx={{
           flex: 2,

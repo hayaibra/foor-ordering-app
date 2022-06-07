@@ -213,9 +213,12 @@ function Navbar() {
                   }}
                   onClick={() => setOpen(false)}
                 >
-                <a href="#contact" style={{ textDecoration: "none", color: "white" }}>
-                Contacts
-              </a>
+                  <a
+                    href="#contact"
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    Contacts
+                  </a>
                 </Button>
               </Box>
             )}
