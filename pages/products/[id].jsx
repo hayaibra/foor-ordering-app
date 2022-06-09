@@ -271,21 +271,12 @@ function Product(props) {
 
 export default Product;
 
-export async function getStaticProps({ params }) {
-  const data = products.find((p) => p.id === parseInt(params.id));
-  const product = JSON.parse(JSON.stringify(data));
+export async function getServerSideProps(context) {
+  const res = await fetch(
+    `http://localhost:3000/api/products/${context.params.id}`
+  );
+  const data = await res.json();
   return {
-    props: { product },
-  };
-}
-
-export async function getStaticPaths() {
-  const paths = products.map((product) => ({
-    params: { id: `${product.id}` },
-  }));
-
-  return {
-    paths,
-    fallback: false,
+    props: { product: data },
   };
 }
