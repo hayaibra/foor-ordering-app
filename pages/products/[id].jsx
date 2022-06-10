@@ -16,7 +16,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { add } from "../../app/store/Counter";
 import { addProduct } from "../../app/store/Cart";
 import { useState } from "react";
-import { products } from "../../products";
 
 const Price = styled("span")(({ theme }) => ({
   color: theme.palette.othercolor.main,
@@ -271,12 +270,12 @@ function Product(props) {
 
 export default Product;
 
-export async function getServerSideProps(context) {
+export const getServerSideProps = async ({ params }) => {
   const res = await fetch(
-    `http://localhost:3000/api/products/${context.params.id}`
+    `https://foor-ordering-app.vercel.app/api/products/${params.id}`
   );
   const data = await res.json();
   return {
     props: { product: data },
   };
-}
+};
