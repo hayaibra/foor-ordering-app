@@ -3,6 +3,7 @@ import Feature from "../components/features/Feature";
 import OurRest from "../components/footer/OurRest";
 import PizzaList from "../components/pizzalist/PizzaList";
 import { useState } from "react";
+import { server } from "../../config";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -29,9 +30,7 @@ export default function Home() {
 }
 
 export const getServerSideProps = async () => {
-  const response = await fetch(
-    `https://foor-ordering-app.vercel.app/api/products`
-  );
+  const response = await fetch(`${server}/api/products`);
   const data = await response.json();
 
   return {
